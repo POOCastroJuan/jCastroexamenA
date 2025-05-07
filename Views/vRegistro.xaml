@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jCastroexamenA.Views.vRegistro"
+             Title="vRegistro">
+
+    <VerticalStackLayout 
+        Padding="25" 
+        Spacing="20">
+
+        <Label Text="Registro"
+               FontSize="22"
+               TextColor="Blue"
+               HorizontalOptions="Center" />
+
+        <Label Text="Usuario Conectado: {Binding Usuario}" />
+
+        
+        <Grid ColumnDefinitions="*,*"
+              RowDefinitions="Auto">
+            <StackLayout Grid.Column="0" Margin="5">
+                <Label Text="Nombre" />
+                <Entry x:Name="nameEntry" Placeholder="Nombre" />
+            </StackLayout>
+            <StackLayout Grid.Column="1" Margin="5">
+                <Label Text="Apellido" />
+                <Entry x:Name="surnameEntry" Placeholder="Apellido" />
+            </StackLayout>
+        </Grid>
+
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto" 
+              ColumnDefinitions="Auto, *">
+
+            <Label Text="Ciudad" 
+                   Grid.Row="0" 
+                   Grid.Column="0" />
+            <Picker x:Name="cityPicker" 
+                    Grid.Row="0" 
+                    Grid.Column="1">
+                <Picker.Items>
+                    <x:String>Quito</x:String>
+                    <x:String>Guayaquil</x:String>
+                    <x:String>Cuenca</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Monto Inicial" 
+                   Grid.Row="1" 
+                   Grid.Column="0" />
+            <Entry x:Name="amountEntry" 
+                   Grid.Row="1" 
+                   Grid.Column="1" 
+                   Keyboard="Numeric" 
+                   Placeholder="Monto Inicial" />
+
+            <Button Text="Calcular Pago Mensual" 
+                    Grid.Row="2" 
+                    Grid.ColumnSpan="2" 
+                    Clicked="OnCalculateClicked" />
+
+            <Label x:Name="monthlyFeeLabel" 
+                   Text="Cuota Mensual: 0" 
+                   Grid.Row="3" 
+                   Grid.ColumnSpan="2" />
+        </Grid>
+
+        
+        <Label Text="Seleccione Voltaje:" />
+        <Grid ColumnDefinitions="*,*,*"
+              RowDefinitions="Auto">
+            <RadioButton Content="110V" GroupName="Voltaje" Grid.Column="0" />
+            <RadioButton Content="220V" GroupName="Voltaje" Grid.Column="1" />
+            <RadioButton Content="380V" GroupName="Voltaje" Grid.Column="2" />
+        </Grid>
+
+        <Button Text="Ver Resumen"
+                Clicked="OnSummaryClicked" />
+    </VerticalStackLayout>
+</ContentPage>
+
